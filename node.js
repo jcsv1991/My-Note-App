@@ -1,35 +1,26 @@
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
-const express = require('express');
-const connectDB = require('./config/database');
-const app = express();
+const express = require('express'); // Import Express.js
+const connectDB = require('./config/database'); // Import the database connection function
 
+const app = express(); // Initialize Express
 
-app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.send('Welcome to the Note-Taking App!');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-const connectDB = require('./config/database');
-connectDB();
-
+const PORT = process.env.PORT || 3000; // Set the port, default to 3000
 
 // Connect Database
-connectDB();
+connectDB(); // Connect to MongoDB using Mongoose
 
 // Init Middleware
-app.use(express.json());
+app.use(express.json()); // Initialize middleware to parse JSON bodies
 
 // Define Routes
-app.use('/api/notes', require('./routes/noteRoutes'));
-app.use('/api/users', require('./routes/authRoutes'));
+app.use('/api/notes', require('./routes/noteRoutes')); // Note-related CRUD routes
+app.use('/api/users', require('./routes/authRoutes')); // User-related routes (e.g., authentication)
 
-const PORT = process.env.PORT || 5000;
+// Define the home route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Note-Taking App!'); // Basic home route for initial testing
+});
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`); // Log the port the server is running on
+});
