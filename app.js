@@ -24,3 +24,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // Log the port the server is running on
 });
+
+app.use(express.static('public'));
