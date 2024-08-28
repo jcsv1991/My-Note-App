@@ -51,7 +51,7 @@ router.post(
 
       jwt.sign(
         payload,
-        'yourSecretToken',  // Replace with your secret key in a real project
+        process.env.JWT_SECRET, // Use the secret from the environment variable
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
@@ -101,7 +101,7 @@ router.post(
 
       jwt.sign(
         payload,
-        'yourSecretToken',  // Replace with your secret key in a real project
+        process.env.JWT_SECRET, // Use the secret from the environment variable
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;

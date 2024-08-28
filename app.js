@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'); // Import Express.js
 const connectDB = require('./config/database'); // Import the database connection function
 
@@ -16,7 +17,7 @@ app.use(express.static('public'));
 
 // Define Routes
 app.use('/api/notes', require('./routes/noteRoutes')); // Note-related CRUD routes
-app.use('/api/users', require('./routes/authRoutes')); // User-related routes (e.g., authentication)
+app.use('/api/auth', require('./routes/authRoutes')); // User-related routes (e.g., authentication)
 
 // Define the home route
 app.get('/', (req, res) => {
