@@ -73,7 +73,7 @@ const deleteNote = async (req, res) => {
       return res.status(401).json({ msg: 'Not authorized' });
     }
 
-    await Note.findByIdAndRemove(req.params.id);
+    await Note.findByIdAndDelete(req.params.id);
 
     res.json({ msg: 'Note removed' });
   } catch (err) {

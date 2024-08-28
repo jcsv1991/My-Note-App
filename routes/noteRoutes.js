@@ -22,4 +22,5 @@ router.put('/:id', auth, updateNote);
 // @access  Private
 router.delete('/:id', auth, deleteNote);
 
+
 module.exports = router;
