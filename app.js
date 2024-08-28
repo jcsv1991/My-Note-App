@@ -11,6 +11,9 @@ connectDB(); // Connect to MongoDB using Mongoose
 // Init Middleware
 app.use(express.json()); // Initialize middleware to parse JSON bodies
 
+// Serve Static Files
+app.use(express.static('public'));
+
 // Define Routes
 app.use('/api/notes', require('./routes/noteRoutes')); // Note-related CRUD routes
 app.use('/api/users', require('./routes/authRoutes')); // User-related routes (e.g., authentication)
@@ -25,4 +28,3 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // Log the port the server is running on
 });
 
-app.use(express.static('public'));
