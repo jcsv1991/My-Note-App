@@ -9,7 +9,7 @@ const User = require('../models/User');
 // @desc    Register a new user
 // @access  Public
 router.post(
-  '/register', // Changed to '/register' to make it clear this is the registration route
+  '/register', 
   [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
