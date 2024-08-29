@@ -20,7 +20,7 @@ h1, h2 {
 }
 
 input, textarea {
-    width: 100%;
+    width: calc(100% - 20px); /* Subtract padding from total width */
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
@@ -28,7 +28,7 @@ input, textarea {
 }
 
 button {
-    width: 100%;
+    width: calc(100% - 20px); /* Subtract padding from total width */
     padding: 10px;
     background-color: #333;
     color: #fff;
@@ -39,6 +39,21 @@ button {
 
 button:hover {
     background-color: #555;
+}
+
+.auth-container {
+    padding-right: 20px; /* Add padding to the right side */
+    padding-left: 20px;  /* Ensure symmetrical padding */
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container input, .auth-container button {
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #notes-list {
@@ -56,8 +71,19 @@ button:hover {
     align-items: center;
 }
 
+.note-item-content {
+    flex: 1;
+    padding-right: 20px; /* Ensure content has space on the right */
+}
+
+.note-item-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Adds space between the buttons */
+    padding-right: 10px; /* Adds space between buttons and container edge */
+}
+
 .note-item button {
-    margin-left: 10px;
     background-color: #007bff;
     border-radius: 3px;
 }
