@@ -63,10 +63,44 @@ button:hover {
 }
 
 .note-item button.delete {
-    background-color: #dc3545;
+    background-color: #fd7e14; /* Updated delete button color to orange */
 }
 
+/* Sign Out Button Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
 
+.header h1, .header h2 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
 
+.sign-out-btn {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: auto; /* Align the button to the right */
+    width: auto; /* Only take up as much space as needed */
+}
 
+.sign-out-btn:hover {
+    background-color: #c82333;
+}
 
+.sign-out-btn:focus {
+    outline: none;
+}

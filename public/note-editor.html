@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="editor-container">
+    <div class="header"> <!-- Added header div -->
         <h2>Edit Note</h2>
+        <button id="sign-out-button" class="sign-out-btn">Sign Out</button> <!-- Sign Out Button Added -->
+    </div>
+    <div class="editor-container">
         <form id="note-form">
             <input type="text" id="note-title" placeholder="Title" required>
             <textarea id="note-content" placeholder="Content" required></textarea>

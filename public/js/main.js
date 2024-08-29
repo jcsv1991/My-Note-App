@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log("Token retrieved:", token);
     console.log("Note ID from URL:", noteId);
 
+    // Handle Sign Out
+    if (document.getElementById('sign-out-button')) {
+        document.getElementById('sign-out-button').addEventListener('click', () => {
+            console.log("Sign out button clicked");
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        });
+    }
+
     // Handle Login and Registration
     if (document.getElementById('login-form')) {
         console.log("Login form detected");
