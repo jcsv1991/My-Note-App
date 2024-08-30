@@ -1,11 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { getNotes, addNote, updateNote, deleteNote } = require('../controllers/noteController');
+const { getNotes, addNote, updateNote, deleteNote, getNoteById } = require('../controllers/noteController');
 const auth = require('../middleware/auth');
 // @route   GET /api/notes
 // @desc    Get all notes for a user
 // @access  Private
 router.get('/', auth, getNotes);
+
+// @route   GET /api/notes/:id
+// @desc    Get a single note by ID
+// @access  Private
+router.get('/:id', auth, getNoteById);
 
 // @route   POST /api/notes
 // @desc    Add a new note

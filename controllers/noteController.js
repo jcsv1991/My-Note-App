@@ -82,9 +82,26 @@ const deleteNote = async (req, res) => {
   }
 };
 
+// Get a single note by ID
+const getNoteById = async (req, res) => {
+  try {
+      const note = await Note.findById(req.params.id);
+
+      if (!note) {
+          return res.status(404).json({ msg: 'Note not found' });
+      }
+
+      res.json(note);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+  }
+};
+
 module.exports = {
   getNotes,
   addNote,
   updateNote,
   deleteNote,
+  getNoteById 
 };

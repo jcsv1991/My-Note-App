@@ -23,15 +23,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (document.getElementById('login-form')) {
         console.log("Login form detected");
 
-        document.getElementById('register-link').addEventListener('click', () => {
+        document.getElementById('register-link').addEventListener('click', (e) => {
+            e.preventDefault();
             console.log("Register link clicked");
             document.getElementById('login-form').style.display = 'none';
-            document.getElementById('register-form-container').style.display = 'block';
+            document.getElementById('register-form').style.display = 'block';
         });
 
-        document.getElementById('login-link').addEventListener('click', () => {
+        document.getElementById('login-link').addEventListener('click', (e) => {
+            e.preventDefault();
             console.log("Login link clicked");
-            document.getElementById('register-form-container').style.display = 'none';
+            document.getElementById('register-form').style.display = 'none';
             document.getElementById('login-form').style.display = 'block';
         });
 
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log("Login credentials:", { email, password });
 
             try {
-                const res = await fetch('/api/auth/login', { //Path for Login
+                const res = await fetch('/api/auth/login', { // Path for Login
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
@@ -80,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log("Registration details:", { name, email, password });
 
             try {
-                const res = await fetch('/api/auth/register', { //Path for Registration
+                const res = await fetch('/api/auth/register', { // Path for Registration
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, email, password })
@@ -194,11 +196,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 console.log("Response status:", res.status);
 
-                const note = await res.json();
-                console.log("Fetched note data:", note);
+                // Check if the note was fetched successfully
+                if (res.status === 200) { 
+                    const note = await res.json();
+                    console.log("Fetched note data:", note);
 
-                document.getElementById('note-title').value = note.title;
-                document.getElementById('note-content').value = note.content;
+                    // Fill the form with existing note data
+                    document.getElementById('note-title').value = note.title || ''; // Pre-fill title
+                    document.getElementById('note-content').value = note.content || ''; // Pre-fill content
+                } else {
+                    console.error("Failed to fetch note");
+                }
             } catch (error) {
                 console.error("Error fetching note:", error);
             }
@@ -242,5 +250,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.error("Error saving/updating note:", error);
             }
         });
+
+        // Handle Cancel Note Editing
+        if (document.getElementById('cancel-button')) { // Check if cancel button exists
+            document.getElementById('cancel-button').addEventListener('click', () => {
+                console.log("Cancel button clicked, redirecting to dashboard");
+                window.location.href = 'dashboard.html'; // Redirect to dashboard without saving changes
+            });
+        }
     }
 });
