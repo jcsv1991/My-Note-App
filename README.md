@@ -42,23 +42,12 @@ Make sure you have the following installed:
    git clone https://github.com/your-username/note-taking-app.git
    cd note-taking-app
 
-2. **Install Dependencies:**
-    bash
-    npm install
-3. **Set up environmental variables:**
-    Create a .env file in the root of your project and add the following environment variables:
-    MONGO_URI=mongodb://localhost:27017/note-taking-app
-    JWT_SECRET=your_jwt_secret_key
-    •   MONGO_URI: The MongoDB connection string for your local MongoDB instance.
-	•	JWT_SECRET: A secret key for signing JWT tokens.
-4. **Start the MongoDB server:**
-    If MongoDB isn’t already running, you can start it with:
-    bash
-    mongod
-5.  **Start the Application:**
-    bash
-    npm start
-    THE APP SHOULD NOW BE RUNNING ON http://localhost:3000
+2.  **Start the Application:**
+    in terminal enter:
+    node app.js
+    The response should show:
+    Server is running on port 3000
+    MongoDB connected
 
 ## SETUP
 Database Setup
@@ -68,7 +57,7 @@ Database Setup
 
 Running the App
 
-	•	Visit http://localhost:3000 in your browser to view the front-end interface.
+	•	Visit http://localhost:3000/login.html in your browser to view the front-end interface.
 	•	Use Postman or any API client to interact with the backend API.
 
 ## API Endpoints
